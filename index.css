@@ -46,9 +46,7 @@ body {
     width: calc(var(--size) * 6 + 7 * var(--gap) + var(--margin) * 2);
     background: transparent;
     height: var(--size);
-    /* outline: 15px groove #776258; */
-    /* outline: 15px groove #c44900; */
-    outline: 15px groove #ba3b46;
+    outline: calc(var(--size) * 0.3) groove #ba3b46;
     position: absolute;
     top: calc(var(--size) * 10 - var(--size));
     left: calc(var(--gap) * -1);
