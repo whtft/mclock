@@ -3,7 +3,7 @@ body {
     margin: 0;
     --size: 40px;
     --gap: calc(var(--size) * 0.15);
-    --margin: calc(0.05 * var(--size));
+    --margin: calc(0.04 * var(--size));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,4 +54,10 @@ body {
 #h2,
 #m2 {
     margin-right: var(--margin);
+}
+
+#slider {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
 }
