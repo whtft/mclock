@@ -36,5 +36,4 @@ function setDconsPos() {
 }
 
 createClockElements()
-// container.style.marginTop = `${(window.innerHeight - container.offsetHeight) / 2}px`
 setInterval(setDconsPos, 1000)
