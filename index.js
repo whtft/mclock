@@ -1,39 +1,21 @@
 const container = document.querySelector('#mclock')
+const size = parseInt(getComputedStyle(document.body).getPropertyValue('--size'))
 
-let dCons = []
-let size = parseInt(getComputedStyle(document.body).getPropertyValue('--size'))
-
-function createClockElements() {
-    const digits = {
-        h1: [0, 1, 2],
-        h2: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-        m1: [0, 1, 2, 3, 4, 5],
-        m2: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-        s1: [0, 1, 2, 3, 4, 5],
-        s2: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-    }
+;(() => {
+    const digits = { h1: 2, h2: 9, m1: 5, m2: 9, s1: 5, s2: 9 }
+    const strips = []
 
     for (const digit of Object.keys(digits)) {
-        dCons.push(Object.assign(document.createElement('div'), { id: digit, className: 'digitContainer' }))
-    }
-
-    for (const dCon of dCons) {
-        for (const digit of digits[dCon.id]) {
-            const d = Object.assign(document.createElement('div'), { className: 'digit', textContent: digit })
-            dCon.append(d)
+        const strip = Object.assign(document.createElement('div'), { id: digit, className: 'strip' })
+        for (let i = 0; i <= digits[digit]; ++i) {
+            strip.append(Object.assign(document.createElement('div'), { className: 'digit', textContent: i }))
         }
+        strips.push(strip)
+        container.append(strip)
     }
 
-    container.append(...dCons)
-}
-
-function setDconsPos() {
-    const numbers = new Date().toTimeString().substring(0, 8).replaceAll(':', '').split('').map(Number)
-    for (let i = 0; i < 6; i++) {
-        const offset = numbers[i] * size
-        dCons[i].style.translate = `0 -${offset}px`
-    }
-}
-
-createClockElements()
-setInterval(setDconsPos, 1000)
+    setInterval(() => {
+        const numbers = new Date().toTimeString().substring(0, 8).replaceAll(':', '').split('').map(Number)
+        for (let i = 0; i < 6; i++) strips[i].style.translate = `0 -${numbers[i] * size}px`
+    }, 1000)
+})()

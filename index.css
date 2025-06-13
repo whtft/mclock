@@ -1,11 +1,9 @@
 body {
-    /* background-color: #1e2030; */
     background-color: #04151f;
     margin: 0;
     --size: 40px;
     --gap: calc(var(--size) * 0.15);
     --margin: calc(0.05 * var(--size));
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,7 +22,7 @@ body {
     position: relative;
 }
 
-.digitContainer {
+.strip {
     margin-top: calc(var(--size) * 10 - var(--size));
     transition: translate 800ms ease-in-out;
 }
